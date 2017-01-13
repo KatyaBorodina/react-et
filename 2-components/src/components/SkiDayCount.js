@@ -1,14 +1,21 @@
-import React from 'react'
+import { Component } from 'react'
 import '../stylesheets/ui.scss'
+import FaFlagO from 'react-icons/lib/fa/flag-o'
+import FaFlag from 'react-icons/lib/fa/flag'
+import FaFlagCheckered from 'react-icons/lib/fa/flag-checkered'
 
-export const SkiDayCount = React.createClass({
+//first method
+// export const SkiDayCount = React.Component({})
+
+//second method - COMPONENTS WITH ES6
+export class SkiDayCount extends Component {
     percentToDecimal(decimal) {
         return ((decimal * 100) + '%')
-    },
+    }
 
     calcGoalProgress(total, goal) {
         return this.percentToDecimal(total/goal)
-    },
+    }
 
     render() {
         return (
@@ -36,4 +43,47 @@ export const SkiDayCount = React.createClass({
             </div>
         )
     }
-})
+}
+
+//third method - STATELESS COMPONENTS
+const percentToDecimal2 = (decimal) => {
+    return ((decimal * 100) + '%')
+}
+
+const calcGoalProgress2 = (total, goal) => {
+    return percentToDecimal2(total/goal)
+}
+
+export const SkiDayCount2 = ({ total, powder, backcountry, goal }) => (
+<div className="ski-day-count">
+    <div className="total-days">
+        <span>
+            {total}
+            <FaFlagO />
+        </span>
+        <span>days</span>
+    </div>
+    <div className="powder-days">
+        <span>
+            {powder}
+            <FaFlag />
+        </span>
+        <span>days</span>
+    </div>
+    <div className="backcountry-days">
+        <span>
+            {backcountry}
+            <FaFlagCheckered />
+        </span>
+        <span>days</span>
+    </div>
+    <div>
+        <span>
+            {calcGoalProgress2(
+                total,
+                goal
+            )}
+        </span>
+    </div>
+</div>
+)
