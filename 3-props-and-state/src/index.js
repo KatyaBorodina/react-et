@@ -1,37 +1,20 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { SkiDayList } from './components/SkiDayList'
-import { SkiDayCount } from './components/SkiDayCount'
+import { App } from './components/App'
+import { Router, Route, hashHistory } from 'react-router'
+import { Whoops404 } from './components/Whoops404'
+import { AddDayForm } from './components/AddDayForm'
 
 window.React = React
 
-/*render(
-	<SkiDayList days={
-		[
-			{
-				resort: 'Yalta',
-				date: new Date('1/5/2017'),
-				powder: true,
-				backcountry: false
-			},
-			{
-				resort: 'Kotor',
-				date: new Date('3/9/2017'),
-				powder: false,
-				backcountry: false
-			},
-			{
-				resort: 'Budapest',
-				date: new Date('8/15/2017'),
-				powder: false,
-				backcountry: true
-			}
-		]
-	} />,
-	document.getElementById('react-container')
-)*/
-
 render(
-	<SkiDayCount />,
+	<Router history={hashHistory}>
+		<Route path='/' component={App} />
+		<Route path='list-days' component={App}>
+			<Route path=':filter' component={App} />
+		</Route>
+		<Route path='add-day' component={App} />
+		<Route path='*' component={Whoops404} />
+	</Router>,
 	document.getElementById('react-container')
 )
