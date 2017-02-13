@@ -43,7 +43,7 @@ export class SkiDayCount extends Component {
 
 SkiDayCount.defaultProps = {
 		total: 50,
-		powder: 10,
+		powder: 15,
 		backcountry: 5,
 		goal: 100
 }

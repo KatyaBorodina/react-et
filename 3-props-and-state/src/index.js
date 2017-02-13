@@ -5,6 +5,10 @@ import { Router, Route, hashHistory } from 'react-router'
 import { Whoops404 } from './components/Whoops404'
 import { AddDayForm } from './components/AddDayForm'
 
+import './stylesheets/index.scss'
+import './stylesheets/ui.scss'
+
+
 window.React = React
 
 render(
